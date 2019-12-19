@@ -1,3 +1,3 @@
 FROM openjdk:8-jdk-alpine
-COPY kosongan-1.0-SNAPSHOT.jar app.jar
+COPY target/kosongan-1.0-SNAPSHOT.jar app.jar
 ENTRYPOINT ["java","-jar","/app.jar"]

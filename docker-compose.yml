@@ -2,11 +2,11 @@ version: '3.7'
 services:
   kosongan:
     environment:
-      - PORT=6969
+      - PORT=8080
     image: edo/kosongan:1.0
     build:
       context: ./
       dockerfile: dockerfile
     ports: 
-      - "8969:6969"
+      - "8080:8080"
     restart: always

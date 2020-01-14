@@ -1,0 +1,41 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: kosongan
+spec:
+  type: LoadBalancer
+  selector:
+    app: kosongan
+  ports:
+    - name: http
+      protocol: TCP
+      port: 8282
+      targetPort: kosongan-port
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kosongan
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: kosongan
+  template:
+    metadata:
+      labels:
+        app: kosongan
+    spec:
+      containers:
+      - name: kosongan
+        image: edwardsuwirya/kampret:kosongan1.1
+        env:
+         - name: PORT
+           value: "8282"
+        ports:
+        - name: kosongan-port
+          containerPort: 8282
+          protocol: TCP
+      imagePullSecrets:
+        - name: regcred 

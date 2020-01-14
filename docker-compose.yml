@@ -1,12 +1,10 @@
 version: '3.7'
 services:
   kosongan:
-    environment:
-      - PORT=8080
-    image: edo/kosongan:1.0
+    image: edo/kosongan:1.1
     build:
       context: ./
       dockerfile: dockerfile
-    ports: 
-      - "8080:8080"
+    ports:
+     - "8282:8282"
     restart: always
